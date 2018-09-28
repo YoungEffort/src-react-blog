@@ -33,6 +33,11 @@ class Articles extends React.Component<IArticles> {
     pageSize: 10
   }
   public onChange = (page: number, pageSize: number) => {
+    // setState(updater, [callback])
+    // 功能：setState()将需要处理的变化塞入（译者注：setState源码中将一个需要改变的变化存放到组件的state对象中，采用队列处理）组件的state对象中， 并告诉该组件及其子组件需要用更新的状态来重新渲染。这是用于响应事件处理和服务端响应的更新用户界面的主要方式。
+    // 参数：第一个函数是带签名的updater函数，你可以选择性地传递一个对象作为 setState()的第一个参数而不是一个函数
+    // setState()的第二个参数是一个可选地回调函数，其将会在setState执行完成同时组件被重渲之后执行。通常，对于这类逻辑，我们推荐使用componentDidUpdate。
+    // 返回值：无
     this.setState(
       {
         pageIndex: page,
@@ -49,6 +54,7 @@ class Articles extends React.Component<IArticles> {
   public render() {
     const { articles = [], total } = this.props
     const { pageIndex, pageSize } = this.state
+    
     return (
       <div>
         <QueueAnim
